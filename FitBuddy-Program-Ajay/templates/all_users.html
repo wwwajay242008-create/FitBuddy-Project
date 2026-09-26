@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}FitBuddy – Admin Dashboard{% endblock %}
+{% block content %}
+<div class="page-head"><div><p class="eyebrow">ADMIN</p><h1>Users & Plans</h1></div><a class="button secondary" href="/">Back</a></div>
+<div class="table-wrap"><table><thead><tr><th>User</th><th>Age</th><th>Goal</th><th>Intensity</th><th>Plans</th><th>Latest feedback</th></tr></thead><tbody>{% for user in users %}<tr><td><b>{{ user.username }}</b><small>{{ user.user_id }}</small></td><td>{{ user.age }}</td><td>{{ user.goal }}</td><td>{{ user.intensity }}</td><td>{{ user.plans|length }}</td><td>{% if user.plans %}{{ user.plans[-1].feedback or '—' }}{% else %}—{% endif %}</td></tr>{% else %}<tr><td colspan="6">No users yet.</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}
